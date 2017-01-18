@@ -1,0 +1,23 @@
+{
+  "name": "temp_and_humi_sensor",
+  "version": "1.0.0",
+  "description": "/root/app",
+  "main": "app.js",
+  "dependencies": {
+    "com": "^0.0.5",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "firmata": "^0.12.0",
+    "fs": "^0.0.1-security",
+    "moment": "^2.15.2",
+    "os": "^0.1.1",
+    "path": "^0.12.7",
+    "tingodb": "^0.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

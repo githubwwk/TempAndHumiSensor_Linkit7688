@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+
+<%     
+%>
+  <title>Current Temperature and Humidity</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      
+  <script src="js/echart/echarts-all.js"></script>
+
+  <script type="text/javascript">
+    
+	function setData()
+	{
+	}
+
+
+	$(document).ready(function(){
+
+        function autoTimeUpdate()
+        {
+        	console.log("autoTimeUpdate()+");
+    			$.ajax({
+    			   url: 'http://mylinkit.local:3000/current?autoTimeUpdate=true',
+    			   type: 'GET',
+    			   dataType: 'json',
+
+    			   error: function() {
+    			   	  console.log("Error [34]");
+    			      //$('#info').html('<p>An error has occurred</p>');
+    			   },
+    			   
+    			   success: function(data) {
+    			      //var $title = $('<h1>').text(data.talks[0].talk_title);
+    			      //var $description = $('<p>').text(data.talks[0].talk_description);
+    			      //$('#info')
+    			      //   .append($title)
+    			      //   .append($description);
+    			      console.log("autoTimeUpdate() get->");
+    			      console.dir(data);
+    			      $('#td_time').text(data.result.time);
+    			      $('#td_temp').text(data.result.temp + '°C');
+    			      $('#td_humi').text(data.result.humi + '%');
+    			   },
+    			  
+    			});
+
+			    setTimeout(autoTimeUpdate, 60000);		
+        } /* autoTimeUpdate */
+		setTimeout(autoTimeUpdate, 60000);		
+	});
+
+
+    </script>
+</head>
+<body>
+<div class="row">
+  <div class="col-sm-4">
+  	
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>temperature</th>
+        <th>Humidity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="info">
+        <td id='td_time'><%= result.time %></td>
+        <td id='td_temp'><%= result.temp %>°C</td>
+        <td id='td_humi'><%= result.humi %>%</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</body>
+</html>
