@@ -45,3 +45,10 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+mpu/node_modules/moment
+mpu/node_modules/os
+mpu/node_modules/path
+mpu/node_modules/tingodb
+mpu/node_modules/express
+mpu/node_modules/ejs
